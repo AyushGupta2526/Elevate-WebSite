@@ -1,0 +1,107 @@
+@import "tailwindcss";
+
+body {
+  font-family: 'general', sans-serif;
+  width: 100dvw;
+  background-color: #dfdff0;
+  overflow-x: hidden;
+}
+
+@layer base {
+  /* ================= fonts ================= */
+  @font-face {
+    font-family: "circular-web";
+    src: url("/fonts/circularweb-book.woff2") format("woff2");
+    font-weight: 400;
+    font-style: normal;
+  }
+
+  @font-face {
+    font-family: "general";
+    src: url("/fonts/general.woff2") format("woff2");
+    font-weight: 400;
+    font-style: normal;
+  }
+
+  @font-face {
+    font-family: "robert-medium";
+    src: url("/fonts/robert-medium.woff2") format("woff2");
+    font-weight: 500;
+    font-style: normal;
+  }
+
+  @font-face {
+    font-family: "robert-regular";
+    src: url("/fonts/robert-regular.woff2") format("woff2");
+    font-weight: 400;
+    font-style: normal;
+  }
+
+  @font-face {
+    font-family: "zentry";
+    src: url("/fonts/zentry.woff2") format("woff2");
+    font-weight: 400;
+    font-style: normal;
+  }
+
+  /* ================= colors (from image) ================= */
+  :root {
+    /* blue */
+    --blue-50: 223 223 240;   /* #DFDFF0 */
+    --blue-75: 223 223 242;   /* #DFDFF2 */
+    --blue-100: 240 242 250;  /* #F0F2FA */
+    --blue-200: 1 1 1;        /* #010101 */
+    --blue-300: 79 183 221;   /* #4FB7DD */
+
+    /* violet */
+    --violet-300: 87 36 255;  /* #5724FF */
+
+    /* yellow */
+    --yellow-100: 142 152 63; /* #8E983F */
+    --yellow-300: 237 255 102;/* #EDFF66 */
+  }
+}
+
+@layer utilities {
+  /* ================= fonts ================= */
+  .font-zentry {
+    font-family: "zentry", sans-serif;
+  }
+
+  .font-general {
+    font-family: "general", sans-serif;
+  }
+
+  .font-circular-web {
+    font-family: "circular-web", sans-serif;
+  }
+
+  .font-robert-medium {
+    font-family: "robert-medium", sans-serif;
+  }
+
+  .font-robert-regular {
+    font-family: "robert-regular", sans-serif;
+  }
+
+  /* ================= colors ================= */
+  .bg-blue-50 { background-color: rgb(var(--blue-50)); }
+  .bg-blue-75 { background-color: rgb(var(--blue-75)); }
+  .bg-blue-100 { background-color: rgb(var(--blue-100)); }
+  .bg-blue-200 { background-color: rgb(var(--blue-200)); }
+  .bg-blue-300 { background-color: rgb(var(--blue-300)); }
+
+  .text-blue-50 { color: rgb(var(--blue-50)); }
+  .text-blue-75 { color: rgb(var(--blue-75)); }
+  .text-blue-100 { color: rgb(var(--blue-100)); }
+  .text-blue-200 { color: rgb(var(--blue-200)); }
+  .text-blue-300 { color: rgb(var(--blue-300)); }
+
+  .bg-violet-300 { background-color: rgb(var(--violet-300)); }
+  .text-violet-300 { color: rgb(var(--violet-300)); }
+
+  .bg-yellow-100 { background-color: rgb(var(--yellow-100)); }
+  .bg-yellow-300 { background-color: rgb(var(--yellow-300)); }
+  .text-yellow-100 { color: rgb(var(--yellow-100)); }
+  .text-yellow-300 { color: rgb(var(--yellow-300)); }
+}
