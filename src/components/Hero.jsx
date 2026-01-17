@@ -3,8 +3,9 @@ import { useState } from 'react';
 import Button from './Button';
 import { TiLocationArrow } from 'react-icons/ti';
 import { useGSAP } from '@gsap/react';
-import { gsap } from 'gsap';
+import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/all';
+import VideoPreview from './VideoPreview';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -15,6 +16,7 @@ const Hero = () => {
     const [loadedVideos, setLoadedVideos] = useState(0);
 
     const totalVideos = 4;
+    const currentVideoRef = useRef(null);
     const nextVideoRef = useRef(null);
 
     const handleVideoLoad = () => {
@@ -46,7 +48,7 @@ const Hero = () => {
                 height: '100%',
                 duration: 1,
                 ease: 'power1.inOut',
-                onStart: () =>  nextVideoRef.current.play(),
+                onStart: () =>  nextVideoRef.current?.play(),
                 })
 
                 gsap.from('#current-video', {
@@ -61,13 +63,13 @@ const Hero = () => {
 
     useGSAP(() => {
         gsap.set('#video-frame', {
-            clipPath: 'polygon(14% 0%, 72% 0%, 88% 90%, 0% 95%)',
-            borderRadius: '0 0 40% 10%'
+            clipPath: 'polygon(14% 0, 72% 0, 88% 90%, 0 95%)',
+            borderRadius: '0% 0% 40% 10%',
         })
 
         gsap.from('#video-frame', {
             clipPath: 'polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)',
-            borderRadius: '0 0 0 0',
+            borderRadius: '0% 0% 0% 0%',
             ease: 'power1.inOut',
             scrollTrigger: {
                 trigger: '#video-frame',
@@ -95,9 +97,10 @@ const Hero = () => {
         <div id="video-frame" className='relative z-10 h-dvh w-screen overflow-hidden rounded-lg bg-blue-75'>
             <div>
                 <div className='mask-clip-path absolute-center absolute z-50 size-64 cursor-pointer overflow-hidden rounded-lg'>
+                    <VideoPreview>
                     <div onClick={handleMiniVdClick} className='origin-center scale-50 opacity-0 transition-all duration-500 hover:scale-100 hover:opacity-100'>
                         <video 
-                            ref={nextVideoRef}
+                            ref={currentVideoRef}
                             src={getVideoSrc(upcomingVideoIndex)}
                             loop 
                             muted
@@ -106,6 +109,7 @@ const Hero = () => {
                             onLoadedData={handleVideoLoad}
                         />
                     </div>
+                    </VideoPreview>
                 </div>
 
                 <video
